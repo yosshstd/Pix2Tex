@@ -1,18 +1,18 @@
 SET_PAGE_CONFIG = {
-    "page_title": "Pix2Tex App",
-    "page_icon": ":pencil2:",
-    "layout": "wide",
-    "initial_sidebar_state": "collapsed",
+    'page_title': 'Pix2Tex App',
+    'page_icon': ':pencil2:',
+    'layout': 'wide',
+    'initial_sidebar_state': 'collapsed',
 }
 
-HIDE_ST_STYLE = """
+HIDE_ST_STYLE = '''
                 <style>
-                div[data-testid="stToolbar"] {
+                div[data-testid='stToolbar'] {
                 visibility: hidden;
                 height: 0%;
                 position: fixed;
                 }
-                div[data-testid="stDecoration"] {
+                div[data-testid='stDecoration'] {
                 visibility: hidden;
                 height: 0%;
                 position: fixed;
@@ -41,14 +41,14 @@ HIDE_ST_STYLE = """
                             padding-left: 3rem;
                             padding-bottom: 0rem;
                         }
-                        header[data-testid="stHeader"] {
+                        header[data-testid='stHeader'] {
                             z-index: -1;
                         }
-                        div[data-testid="stToolbar"] {
+                        div[data-testid='stToolbar'] {
                         z-index: 100;
                         }
-                        div[data-testid="stDecoration"] {
+                        div[data-testid='stDecoration'] {
                         z-index: 100;
                         }
                 </style>
-"""
+'''
