@@ -15,7 +15,7 @@ from streamlit_paste_button import paste_image_button as pbutton
 def main():
     ''''''
     predicted_formula = ''
-    st.markdown(f'<h1 style='text-align:center;'>Pix2Tex App</h1>', unsafe_allow_html=True)
+    st.markdown(f"<h1 style='text-align:center;'>Pix2Tex App</h1>", unsafe_allow_html=True)
     st.sidebar.caption(
         'This is a demo app of [Mathematical Formula Recognition](https://huggingface.co/breezedeus/pix2text-mfr).\n \
         The model is based on the [TrOCR](https://huggingface.co/models?search=trOCR) architecture and was retraiend on a dataset of mathematical formula images.'
