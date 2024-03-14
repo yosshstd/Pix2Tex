@@ -77,7 +77,7 @@ def main():
     st.markdown('<hr>', unsafe_allow_html=True)
     st.markdown('<h2 style="text-align:center;">Pix2Tex App</h2>', unsafe_allow_html=True)
     st.markdown(
-        '<div style="text-align:center;font-size:12px;opacity:0.7;">This is a demo app of <a href="https://huggingface.co/breezedeus/pix2text-mfr" target="_blank">Mathematical Formula Recognition</a><br>'
+        '<div style="text-align:center;font-size:12px;opacity:0.7;">This app is powered by <a href="https://huggingface.co/breezedeus/pix2text-mfr" target="_blank">Mathematical Formula Recognition</a><br>'
         '(©️ 2022 <a href="https://www.breezedeus.com/join-group" target="_blank">BreezeDeus</a>｜<a href="https://github.com/breezedeus/Pix2Text/blob/main/LICENSE" target="_blank">MIT License</a>).<br></div>',
         unsafe_allow_html=True
     )
@@ -92,3 +92,4 @@ if __name__ == '__main__':
 # To-Do
     # - [ ] Add on-change event for the Latex Preview
     # - [ ] change copy botton to a better one
+    # - [ ] Auto correction for the latex formula by GPT-3
