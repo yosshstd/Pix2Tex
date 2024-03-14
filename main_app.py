@@ -32,11 +32,12 @@ def main():
     col1, col2 = st.columns([1, 2])
     img_source = col1.radio('Image Source', ('Paste', 'Upload'))
     if img_source == 'Paste':
-        out = pbutton('Paste an image').image_data
-        try:
-            image_data = out.convert('RGB')
-        except:
-            image_data = None
+        with col1:
+            out = pbutton('Paste an image').image_data
+            try:
+                image_data = out.convert('RGB')
+            except:
+                image_data = None
     elif img_source == 'Upload':
         image_file = col1.file_uploader('Upload an image', type=['jpg', 'jpeg', 'png'])
         try :
@@ -47,7 +48,6 @@ def main():
 
 
     if image_data is not None:
-
         # Perform OCR
         with st.spinner('Loading...'):
             start_time = time.time()
@@ -56,28 +56,31 @@ def main():
             outputs = model.generate(**inputs)
             predicted_formula = processor.decode(outputs[0], skip_special_tokens=True)
             st.success(f'Elapsed time: {time.time()-start_time:.2f} [sec]')
+    else:
+        with st.spinner('Loading...'):
+            start_time = time.time()
+            default_image = Image.open(const.DEFAULT_IMAGE).convert('RGB')
+            col2.image(default_image, caption='Default image', use_column_width=True)
+            inputs = processor(default_image, return_tensors='pt')
+            outputs = model.generate(**inputs)
+            predicted_formula = processor.decode(outputs[0], skip_special_tokens=True)
+            st.success(f'Elapsed time: {time.time()-start_time:.2f} [sec]')
 
 
-    # def on_latex_change():
-    #     if st.session_state.input_latex:
-    #         col2.latex(st.session_state.input_latex.replace('$', ''))
-    #     else:
-    #         col2.empty()
     col1, col2 = st.columns(2)
     col1.text_area('Latex Editer', value='$$\n'+predicted_formula+'\n$$', height=300, key='input_latex')
-    st_copy_to_clipboard(st.session_state.input_latex)
+    #st_copy_to_clipboard(st.session_state.input_latex)
     col2.markdown('<small>Preview</small>', unsafe_allow_html=True)
     col2.latex(st.session_state.input_latex.replace('$', ''))
 
     st.expander('To-Do').markdown('''
     - [ ] Add on-change event for the Latex Preview
     - [ ] Add copy mathml to clipboard
+    - [ ] Add sample input
+    - [ ] change copy botton to a better one
     ''')
     
 
 
 if __name__ == '__main__':
     main()
-
-## To-Do:
-# - [ ] Add copy to cli

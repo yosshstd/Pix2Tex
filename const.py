@@ -5,6 +5,8 @@ SET_PAGE_CONFIG = {
     'initial_sidebar_state': 'collapsed',
 }
 
+DEFAULT_IMAGE = 'image/attention.PNG'
+
 HIDE_ST_STYLE = '''
                 <style>
                 div[data-testid='stToolbar'] {
