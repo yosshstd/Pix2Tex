@@ -17,7 +17,8 @@ def main():
     predicted_formula = ''
     st.markdown(f'<h1 style="text-align:center;">Pix2Tex App</h1>', unsafe_allow_html=True)
     st.sidebar.caption(
-        'This is a demo app of [Mathematical Formula Recognition](https://huggingface.co/breezedeus/pix2text-mfr).\n \
+        'This is a demo app of [Mathematical Formula Recognition](https://huggingface.co/breezedeus/pix2text-mfr) \
+        (©️ 2022 [BreezeDeus](https://www.breezedeus.com/join-group)｜[MIT License](https://github.com/breezedeus/Pix2Text/blob/main/LICENSE)).  \
         The model is based on the [TrOCR](https://huggingface.co/models?search=trOCR) architecture and was retraiend on a dataset of mathematical formula images.'
     )
     # Load the model cached
@@ -76,10 +77,17 @@ def main():
     st.expander('To-Do').markdown('''
     - [ ] Add on-change event for the Latex Preview
     - [ ] Add copy mathml to clipboard
-    - [ ] Add sample input
     - [ ] change copy botton to a better one
     ''')
-    
+
+    # Footer
+    #st.markdown('<hr>', unsafe_allow_html=True)
+    st.markdown('<h2 style="text-align:center;">Pix2Tex App</h2>', unsafe_allow_html=True)
+    st.markdown(
+        '<div style="text-align:center;font-size:12px;opacity:0.7;">This is a demo app of <a href="https://huggingface.co/breezedeus/pix2text-mfr" target="_blank">Mathematical Formula Recognition</a><br>'
+        '(©️ 2022 <a href="https://www.breezedeus.com/join-group" target="_blank">BreezeDeus</a>｜<a href="https://github.com/breezedeus/Pix2Text/blob/main/LICENSE" target="_blank">MIT License</a>).<br></div>',
+        unsafe_allow_html=True
+    )
 
 
 if __name__ == '__main__':
