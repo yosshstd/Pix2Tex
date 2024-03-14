@@ -3,4 +3,4 @@ pillow==10.1.0
 optimum[onnxruntime]==1.17.1
 streamlit==1.32.0
 streamlit-paste-button==0.1.2
-st-copy-to-clipboard==0.1.4
+latex2mathml==3.77.0
