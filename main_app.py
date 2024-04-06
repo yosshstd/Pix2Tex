@@ -7,7 +7,9 @@ st.markdown(const.HIDE_ST_STYLE, unsafe_allow_html=True)
 from PIL import Image
 from transformers import TrOCRProcessor
 from optimum.onnxruntime import ORTModelForVision2Seq
-from streamlit_paste_button import paste_image_button as pbutton
+from st_img_pastebutton import paste
+from io import BytesIO
+import base64
 import latex2mathml.converter
 
 
@@ -30,9 +32,11 @@ def main():
     img_source = col1.radio('Image Source', ('Paste', 'Upload'), help='You can paste an mathematical formula image from clipboard or upload an image from your local machine.')
     if img_source == 'Paste':
         with col1:
-            out = pbutton('Paste an image').image_data
+            pasted_img = paste(key='image_clipboard', label='Paste an image from clipboard')
             try:
-                image_data = out.convert('RGB')
+                header, encoded = pasted_img.split(",", 1)
+                binary_data = base64.b64decode(encoded)
+                image_data = Image.open(BytesIO(binary_data)).convert('RGB')
             except:
                 image_data = None
     elif img_source == 'Upload':
@@ -78,7 +82,7 @@ def main():
     st.markdown('<h2 style="text-align:center;">Pix2Tex App</h2>', unsafe_allow_html=True)
     st.markdown(
         '<div style="text-align:center;font-size:12px;opacity:0.7;">This app is powered by <a href="https://huggingface.co/breezedeus/pix2text-mfr" target="_blank">Mathematical Formula Recognition</a><br>'
-        '(©️ 2022 <a href="https://www.breezedeus.com/join-group" target="_blank">BreezeDeus</a>｜<a href="https://github.com/breezedeus/Pix2Text/blob/main/LICENSE" target="_blank">MIT License</a>).<br></div>',
+        '(©️ 2022 <a href="https://www.breezedeus.com/join-group" target="_blank">BreezeDeus</a>｜<a href="https://github.com/breezedeus/Pix2Text/blob/main/LICENSE" target="_blank">MIT License</a>)<br></div>',
         unsafe_allow_html=True
     )
     st.markdown('<br>', unsafe_allow_html=True)
